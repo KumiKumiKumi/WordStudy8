@@ -28,6 +28,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        setDesign()
         setLangButton() //言語選択ボタン表示
         setUIPicherView() //ピッカービューの設定
         setLangLabel() //言語ラベルを表示
@@ -218,6 +219,42 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func onClick(sender: UIBarButtonItem) {
         textShowLang.resignFirstResponder()
+    }
+    
+    //***********デザインの指定************//
+    
+    func setDesign(){
+        setTitle()
+        setBackGround2()
+    }
+    
+    func setTitle(){ //タイトルを表示
+        let labelTitle: UILabel = UILabel(frame: CGRectMake(0,0,200,30))
+        labelTitle.backgroundColor = UIColor.orangeColor()
+        labelTitle.layer.masksToBounds = true
+        labelTitle.layer.cornerRadius = 10.0
+        labelTitle.text = "単語練習"
+        labelTitle.textColor = UIColor.whiteColor()
+        labelTitle.shadowColor = UIColor.grayColor()
+        labelTitle.textAlignment = NSTextAlignment.Center
+        labelTitle.layer.position = CGPoint(x: self.view.bounds.width/2,y: 70) //配置設定
+        self.view.addSubview(labelTitle)
+    }
+    
+    func setBackGround2(){
+        self.view.backgroundColor = UIColor.yellowColor()
+        setBackGroundsLabel()
+    }
+    
+    func setBackGroundsLabel(){
+        //ラベルでできた背景の設定
+        var labelBackGround: UILabel = UILabel(frame: CGRectMake(0,0,260,480))
+        labelBackGround.text = ""
+        labelBackGround.backgroundColor = UIColor(red: 0.8, green: 0.2, blue: 0.2, alpha: 0.2) //ラベルの背景色の設定
+        labelBackGround.layer.masksToBounds = true //枠を丸くする
+        labelBackGround.layer.cornerRadius = 20.0 //角の半径
+        labelBackGround.center = CGPointMake(159, 280)
+        self.view.addSubview(labelBackGround)
     }
     
     override func didReceiveMemoryWarning() {
